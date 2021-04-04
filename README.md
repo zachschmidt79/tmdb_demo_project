@@ -1,6 +1,6 @@
 # tmdb_demo_project
 
-A new Flutter project.
+Demonstration project that gets info from TMDB API.
 
 ## Getting Started
 
