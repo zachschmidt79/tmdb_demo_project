@@ -1,7 +1,6 @@
 # tmdb_demo_project
 
-Demonstration project that gets info from TMDB API.
-
+Demonstration project that gets info from TMDB API and displays it on the screen.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
