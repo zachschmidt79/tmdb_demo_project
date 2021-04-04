@@ -22,6 +22,7 @@ class ActorList extends StatelessWidget {
       actorImage = 'https://i.imgur.com/1MYWiv1.png';
     }
 
+    //To display Actor Cards on movie page.
     return new Column(children: [
       new Text(actorName, style: new TextStyle(fontSize: 14.0)),
       new Image.network(actorImage),
