@@ -24,10 +24,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_search_bar: ^2.1.0
-    
-# //My API Key: d54e25b11a099fa81dba4c52daabb377
-
-# //Multi-Search Example URL https://api.themoviedb.org/3/search/multi?api_key=d54e25b11a099fa81dba4c52daabb377&language=en-US&query=EXAMPLE%20QUERY&include_adult=true
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
