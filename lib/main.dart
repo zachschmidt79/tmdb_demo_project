@@ -105,7 +105,8 @@ class _MovieAppHomeState extends State<MovieAppHome> {
     if (loading)
       return new Scaffold(
         backgroundColor: colorCustom2,
-        appBar: new AppBar(title: new Text("Loading...")),
+        appBar: new AppBar(
+            title: new Image(image: AssetImage('images/tmdb_main_logo.png'))),
         body: new Center(child: new CircularProgressIndicator()),
       );
     return new Scaffold(
