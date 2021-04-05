@@ -32,6 +32,9 @@ class _MovieAppHomeState extends State<MovieAppHome> {
   SearchBar searchBar;
   var movies;
   var cfg;
+
+  bool loading = true;
+
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   AppBar buildAppBar(BuildContext context) {
@@ -86,6 +89,8 @@ class _MovieAppHomeState extends State<MovieAppHome> {
       setState(() {
         this.movies = moviesJson;
         this.cfg = cfgJson;
+
+        loading = false;
       });
     }
   }
@@ -97,6 +102,12 @@ class _MovieAppHomeState extends State<MovieAppHome> {
 
   @override
   Widget build(BuildContext context) {
+    if (loading)
+      return new Scaffold(
+        backgroundColor: colorCustom2,
+        appBar: new AppBar(title: new Text("Loading...")),
+        body: new Center(child: new CircularProgressIndicator()),
+      );
     return new Scaffold(
       backgroundColor: colorCustom2,
       appBar: searchBar.build(context),
@@ -136,6 +147,8 @@ class _SearchResultsSTState extends State<SearchResultsST> {
   var movies;
   var cfg;
 
+  bool loading = true;
+
   _searchData(String searchvalue) async {
     print("Attempting to fetch search data from network");
 
@@ -168,6 +181,8 @@ class _SearchResultsSTState extends State<SearchResultsST> {
       setState(() {
         this.movies = moviesJson;
         this.cfg = cfgJson;
+
+        loading = false;
       });
     }
   }
@@ -179,6 +194,12 @@ class _SearchResultsSTState extends State<SearchResultsST> {
 
   @override
   Widget build(BuildContext context) {
+    if (loading)
+      return new Scaffold(
+        backgroundColor: colorCustom2,
+        appBar: new AppBar(title: new Text("Loading...")),
+        body: new Center(child: new CircularProgressIndicator()),
+      );
     return new Scaffold(
       backgroundColor: colorCustom2,
       appBar: new AppBar(title: new Text("Results for: " + widget.searchvalue)),
@@ -218,6 +239,8 @@ class _DetailPageState extends State<DetailPage> {
   var cfg;
   var cast;
 
+  bool loading = true;
+
   _getDetails(int id) async {
     print("Attempting to fetch movie details from network.");
 
@@ -255,6 +278,7 @@ class _DetailPageState extends State<DetailPage> {
         this.movieresult = movieresultsJson;
         this.cast = castJson;
         this.cfg = cfgJson;
+        loading = false;
       });
     }
   }
@@ -266,6 +290,12 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (loading)
+      return new Scaffold(
+        backgroundColor: colorCustom2,
+        appBar: new AppBar(title: new Text("Loading...")),
+        body: new Center(child: new CircularProgressIndicator()),
+      );
     return new Scaffold(
       backgroundColor: colorCustom2,
       appBar: new AppBar(title: new Text(this.movieresult["title"])),
