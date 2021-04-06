@@ -100,6 +100,13 @@ class _MovieAppHomeState extends State<MovieAppHome> {
     _getTrending();
   }
 
+  Future<void> _refreshPage() async {
+    setState(() {
+      loading = true;
+      _getTrending();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     if (loading)
@@ -114,23 +121,26 @@ class _MovieAppHomeState extends State<MovieAppHome> {
       appBar: searchBar.build(context),
       key: _scaffoldKey,
       body: new Center(
-        child: new ListView.builder(
-          itemCount: this.movies != null ? this.movies.length : 0,
-          itemBuilder: (context, i) {
-            final movie = this.movies[i];
-            return new FlatButton(
-              padding: new EdgeInsets.all(0.0),
-              child: new MovieBlock(movie, cfg),
-              onPressed: () {
-                print('Tapped $i');
-                Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (context) =>
-                            new DetailPage(id: this.movies[i]['id'])));
-              },
-            );
-          },
+        child: RefreshIndicator(
+          onRefresh: _refreshPage,
+          child: new ListView.builder(
+            itemCount: this.movies != null ? this.movies.length : 0,
+            itemBuilder: (context, i) {
+              final movie = this.movies[i];
+              return new FlatButton(
+                padding: new EdgeInsets.all(0.0),
+                child: new MovieBlock(movie, cfg),
+                onPressed: () {
+                  print('Tapped $i');
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) =>
+                              new DetailPage(id: this.movies[i]['id'])));
+                },
+              );
+            },
+          ),
         ),
       ),
     );
